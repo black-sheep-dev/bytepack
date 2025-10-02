@@ -676,6 +676,28 @@ public:
     return true;
   }
 
+  bool seekBackward(std::size_t pos)
+  {
+    if ((buffer_.size() - pos) < 0) {
+      return false;
+    }
+
+    read_index_ -= pos;
+
+    return true;
+  }
+
+  bool seekForward(std::size_t pos)
+  {
+    if ((read_index_ + pos) > buffer_.size()) {
+      return false;
+    }
+
+    read_index_ += pos;
+
+    return true;
+  }
+
 private:
   bytepack::buffer_view buffer_;
 
