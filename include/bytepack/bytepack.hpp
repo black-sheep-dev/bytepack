@@ -660,6 +660,22 @@ public:
     return read(firstArg) && (... && read(args));
   }
 
+  // Function to control read position
+
+  std::size_t position() const
+  {
+    return read_index_
+  }
+
+  bool seek(std::size_t pos)
+  {
+    if (pos > buffer_.size()) {
+      return false;
+    }
+    read_index_ = pos;
+    return true;
+  }
+
 private:
   bytepack::buffer_view buffer_;
 
