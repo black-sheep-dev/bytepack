@@ -664,7 +664,7 @@ public:
 
   std::size_t position() const
   {
-    return read_index_
+    return read_index_;
   }
 
   bool seek(std::size_t pos)
